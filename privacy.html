@@ -138,7 +138,7 @@
     <div class="container">
         <h1>Informativa sulla Privacy</h1>
         <div class="last-updated">
-            Ultima modifica: 20 agosto 2026 — Versione 2.0
+            Ultima modifica: 26 agosto 2026 — Versione 2.1
         </div>
 
         <div class="highlight">
@@ -193,7 +193,7 @@
         <p><strong>Diritti dei partecipanti:</strong> le persone i cui dati sono stati inseriti nell'app hanno gli stessi diritti GDPR degli utenti registrati (accesso, rettifica, cancellazione, opposizione). Per esercitarli possono contattare direttamente <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>. In caso di richiesta di cancellazione, elimineremo i dati del partecipante entro 30 giorni.</p>
 
         <h3>2.4 Immagini di Scontrini</h3>
-        <p>Se utilizzi la funzione di scansione scontrini, l'immagine viene trasmessa a <strong>Google LLC</strong> (Gemini API — modello Gemini 2.5 Flash) per l'estrazione dei dati. Questo comporta un <strong>trasferimento di dati verso gli USA</strong>, coperto dalle Clausole Contrattuali Standard (SCC) adottate dalla Commissione Europea e/o dal Data Privacy Framework EU-USA (vedi §5 per i dettagli). L'immagine non viene archiviata permanentemente sui nostri server dopo l'elaborazione. Google dichiara che i dati trasmessi tramite API non vengono utilizzati per addestrare i propri modelli AI.</p>
+        <p>Se utilizzi la funzione di scansione scontrini, l'immagine viene trasmessa a <strong>Google LLC</strong> (Gemini API — modello Gemini 2.5 Flash) per l'estrazione dei dati. Questo comporta un <strong>trasferimento di dati verso gli USA</strong>, coperto dalle Clausole Contrattuali Standard (SCC) adottate dalla Commissione Europea e/o dal Data Privacy Framework EU-USA (vedi §5 per i dettagli). <strong>L'immagine grezza non viene archiviata permanentemente sui nostri server dopo l'elaborazione.</strong> I dati estratti dallo scontrino (nome del merchant e importo totale) vengono invece conservati nel nostro database associati al tuo account, nella cronologia scansioni, fino alla cancellazione dell'account. Google dichiara che i dati trasmessi tramite API non vengono utilizzati per addestrare i propri modelli AI.</p>
 
         <h3>2.5 Dati Tecnici e di Utilizzo</h3>
         <ul>
@@ -204,6 +204,8 @@
             <li>Schermate visitate nell'app — nome della schermata e timestamp, archiviati nel database Supabase associati al tuo UUID utente (pseudonimo). Utilizzati esclusivamente per analisi interne sull'utilizzo del prodotto. Nessun contenuto finanziario viene trasmesso. L'utente può disabilitare la raccolta da <strong>Impostazioni → Privacy</strong>.</li>
             <li>Contatori di utilizzo delle funzioni AI — numero di utilizzi giornalieri per funzione (categorizzazione AI, analisi scontrini, Smart Insights, Budget AI), archiviati nel database associati al tuo UUID utente. Utilizzati esclusivamente per applicare i limiti di utilizzo gratuito del servizio e non vengono condivisi con terzi.</li>
             <li>Identificatore pubblicitario (IDFA) — raccolto da Google AdMob <strong>esclusivamente se l'utente ha prestato consenso esplicito</strong> tramite App Tracking Transparency (ATT). In assenza di consenso non viene raccolto alcun identificatore pubblicitario e vengono mostrati solo annunci non personalizzati.</li>
+            <li>Indirizzo IP — raccolto temporaneamente per la protezione da abusi (rate limiting) nelle chiamate alle funzioni AI; archiviato nei log di utilizzo API per un massimo di 90 giorni, poi eliminato automaticamente.</li>
+            <li>Data e ora dell'ultimo accesso all'app (<em>last_active</em>) e data dell'ultimo invio di email di re-engagement — utilizzate per gestire le comunicazioni di riattivazione verso utenti inattivi ed evitare invii ripetuti ravvicinati.</li>
         </ul>
         <p>La base giuridica per ciascuno dei trattamenti elencati in questa sezione è indicata nella tabella al <strong>§3</strong>. In sintesi: i dati strettamente necessari all'erogazione del servizio sono trattati in base all'esecuzione del contratto (art. 6.1.b); i dati analytics e di diagnostica sono trattati in base al legittimo interesse (art. 6.1.f) con possibilità di opposizione; i dati pubblicitari sono trattati solo previo consenso esplicito (art. 6.1.a).</p>
 
@@ -278,6 +280,16 @@
                     <td>Legittimo interesse (art. 6.1.f) — mantenere la stabilità e la qualità del servizio. I dati sono tecnici e non contengono dati finanziari né identificativi diretti. <strong>Diritto di opposizione (art. 21 GDPR):</strong> disabilita la raccolta da <strong>Impostazioni → Privacy</strong>.</td>
                 </tr>
                 <tr>
+                    <td>Email di re-engagement per utenti inattivi</td>
+                    <td>Email, data ultimo accesso, data ultimo invio</td>
+                    <td>Legittimo interesse (art. 6.1.f) — riattivazione utenti inattivi da 7+ giorni. <strong>Diritto di opposizione (art. 21 GDPR) / opt-out:</strong> disabilita in Impostazioni → Notifiche.</td>
+                </tr>
+                <tr>
+                    <td>Rate limiting e protezione da abusi</td>
+                    <td>Indirizzo IP, conteggio chiamate API</td>
+                    <td>Legittimo interesse (art. 6.1.f) — sicurezza del servizio e prevenzione abusi.</td>
+                </tr>
+                <tr>
                     <td>Assistenza e supporto</td>
                     <td>Email, dettagli segnalati</td>
                     <td>Esecuzione del contratto (art. 6.1.b)</td>
@@ -335,6 +347,18 @@
                     <td>Fino alla cancellazione dell'account (eliminazione automatica a cascata)</td>
                 </tr>
                 <tr>
+                    <td>Dati estratti dagli scontrini (merchant, importo)</td>
+                    <td>Fino alla cancellazione dell'account</td>
+                </tr>
+                <tr>
+                    <td>Log utilizzo API (indirizzo IP, timestamp chiamate AI)</td>
+                    <td>90 giorni, poi eliminati automaticamente</td>
+                </tr>
+                <tr>
+                    <td>Data ultimo accesso e data ultimo re-engagement</td>
+                    <td>Fino alla cancellazione dell'account</td>
+                </tr>
+                <tr>
                     <td>Dati Firebase Analytics (App Instance ID, eventi di utilizzo)</td>
                     <td>Gestiti da Google secondo le impostazioni di conservazione del progetto Firebase (configurate a 14 mesi). Non è possibile cancellare singoli eventi analytics già trasmessi; la cancellazione dell'account interrompe la raccolta futura.</td>
                 </tr>
@@ -383,7 +407,7 @@
                 <tr>
                     <td><strong>Google LLC</strong> (Gemini API — modello: Gemini 2.5 Flash)</td>
                     <td>Intelligenza artificiale (categorizzazione transazioni, suggerimenti budget, analisi scontrini, insight finanziari)</td>
-                    <td>Descrizioni transazioni, importi, immagini scontrini. <strong>Google dichiara nei propri termini di servizio API che i dati inviati tramite API non vengono utilizzati per addestrare i propri modelli di AI.</strong> I dati potrebbero essere temporaneamente conservati per finalità di sicurezza e conformità secondo la policy di Google.</td>
+                    <td>I dati trasmessi variano per funzione e includono, in forma pseudonimizzata (senza nome né email): descrizione, importo, data e merchant delle transazioni; fino a 5 transazioni storiche simili; statistiche aggregate per categoria (media mensile, trend, pattern orario/settimanale); reddito medio stimato; profilo di spesa; obiettivi di risparmio (nome, target, importo accumulato, scadenza); immagini di scontrini. <strong>Google dichiara nei propri termini di servizio API che i dati inviati tramite API non vengono utilizzati per addestrare i propri modelli di AI.</strong></td>
                     <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
                 </tr>
                 <tr>
@@ -419,13 +443,14 @@
                 <tr>
                     <td><strong>Google LLC</strong> (AdMob)</td>
                     <td>Pubblicità in-app (piano gratuito). AdMob può erogare annunci personalizzati basati sul profilo pubblicitario dell'utente (interessi inferiti, comportamento di navigazione cross-app) o annunci non personalizzati (contestuali, senza profilazione).</td>
-                    <td>
-                        <strong>Con consenso ATT (annunci personalizzati):</strong> Identificatore pubblicitario (IDFA), informazioni dispositivo (modello, versione iOS), dati di utilizzo dell'app, segnali contestuali. Questi dati possono essere combinati da Google con informazioni provenienti da altre app e servizi per costruire un profilo pubblicitario.<br><br>
-                        <strong>Senza consenso ATT (annunci non personalizzati):</strong> Solo informazioni contestuali non identificative (es. contenuto della schermata, lingua, fuso orario). Nessun IDFA viene trasmesso.<br><br>
-                        <strong>Base giuridica:</strong> Consenso esplicito (art. 6.1.a GDPR) — richiesto tramite App Tracking Transparency (ATT) prima di qualsiasi raccolta dell'IDFA. Il consenso può essere revocato in qualsiasi momento da <strong>Impostazioni → Privacy e sicurezza → Tracciamento</strong>. In assenza di consenso AdMob opera in modalità non personalizzata.<br><br>
-                        Per ulteriori dettagli: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a> e <a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob Data Usage</a>.
-                    </td>
+                    <td>Con consenso ATT (annunci personalizzati): Identificatore pubblicitario (IDFA), informazioni dispositivo, dati di utilizzo, segnali contestuali. Senza consenso ATT: solo informazioni contestuali non identificative. Base giuridica: consenso esplicito (art. 6.1.a). Per dettagli: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</td>
                     <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                </tr>
+                <tr>
+                    <td><strong>Resend Inc.</strong></td>
+                    <td>Invio email transazionali (comunicazioni di re-engagement per utenti inattivi)</td>
+                    <td>Indirizzo email degli utenti destinatari</td>
+                    <td>USA</td>
                 </tr>
             </tbody>
         </table>
@@ -521,7 +546,7 @@
 
         <div class="footer">
             <p><strong>© 2025-2026 Mafe Balance — Alessio Rongione. Tutti i diritti riservati.</strong></p>
-            <p>Versione 2.0 — Ultima modifica: 20 agosto 2026</p>
+            <p>Versione 2.1 — Ultima modifica: 26 agosto 2026</p>
         </div>
     </div>
 </body>
