@@ -138,11 +138,11 @@
     <div class="container">
         <h1>Informativa sulla Privacy</h1>
         <div class="last-updated">
-            Ultima modifica: 26 agosto 2026 — Versione 2.1
+            Ultima modifica: 6 settembre 2026 — Versione 2.2
         </div>
 
         <div class="highlight">
-            <strong>In sintesi:</strong> Mafe Balance raccoglie solo i dati necessari a fornirti il servizio. Non vendiamo né noleggiamo i tuoi dati personali. I dati vengono condivisi esclusivamente con i fornitori tecnici necessari al funzionamento dell'app (vedi §5) e, solo previo tuo consenso, con AdMob per la pubblicità. Puoi richiedere la cancellazione di tutti i tuoi dati in qualsiasi momento.
+            <strong>In sintesi:</strong> Mafe Balance raccoglie solo i dati necessari a fornirti il servizio. Non vendiamo i tuoi dati a terzi. Puoi richiedere la cancellazione di tutti i tuoi dati in qualsiasi momento.
         </div>
 
         <h2>1. Titolare del Trattamento</h2>
@@ -154,18 +154,6 @@
         </ul>
         <p>Per qualsiasi richiesta relativa ai tuoi dati personali puoi scrivere all'indirizzo email sopra indicato.</p>
 
-        <h3>1.1 Responsabile della Protezione dei Dati (DPO)</h3>
-        <p>A seguito della valutazione prevista dall'art. 37 GDPR, Mafe Balance <strong>non è tenuta a nominare un DPO</strong> in quanto non ricorre nessuna delle condizioni obbligatorie:</p>
-        <ul>
-            <li><strong>Art. 37.1.a</strong> — Non è un'autorità o organismo pubblico.</li>
-            <li><strong>Art. 37.1.b</strong> — Le attività principali non costituiscono monitoraggio regolare e sistematico su larga scala. Secondo le Linee guida WP 243 del Gruppo di Lavoro Art. 29 (ora EDPB), la "larga scala" si valuta considerando: numero di interessati, volume di dati, estensione geografica e durata del trattamento. Mafe Balance tratta dati di un numero limitato di utenti registrati, esclusivamente nel territorio italiano, con dati inseriti manualmente dall'utente stesso (non raccolti in modo automatico o comportamentale su larga scala). Le funzionalità di analytics (Firebase Analytics, screen_views) sono pseudonimizzate, opt-out disponibile, e non producono profilazione con effetti giuridici. Qualora la base utenti dovesse crescere in modo significativo o le attività di trattamento dovessero espandersi, questa valutazione sarà aggiornata e la nomina di un DPO rivalutata.</li>
-            <li><strong>Art. 37.1.c</strong> — I dati trattati non rientrano nelle categorie particolari espressamente elencate dall'art. 9 GDPR. I dati finanziari non compaiono in tale elenco; tuttavia il Titolare riconosce che i dati finanziari personali sono dati <em>ad alto rischio</em> per i diritti e le libertà degli interessati, e adotta misure di protezione equivalenti a quelle previste per le categorie particolari (vedi §7).</li>
-        </ul>
-        <div class="highlight">
-            <strong>Misure di protezione per i dati finanziari:</strong> In considerazione della natura sensibile dei dati finanziari trattati, Mafe Balance applica: crittografia in transito (HTTPS/TLS), password archiviate in forma hashed (bcrypt), Row Level Security su tutte le tabelle del database (ogni utente accede solo ai propri dati), autenticazione JWT con scadenza, accesso amministrativo limitato al minimo indispensabile, e nessuna condivisione con terzi per finalità commerciali. Per i dettagli sulle misure tecniche e organizzative vedere il §7.
-        </div>
-        <p>Per qualsiasi questione relativa alla protezione dei dati il titolare è direttamente raggiungibile a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>.</p>
-
         <h2>2. Dati Raccolti</h2>
         <p>Raccogliamo i seguenti dati personali:</p>
 
@@ -173,6 +161,7 @@
         <ul>
             <li>Indirizzo email (obbligatorio per la creazione dell'account)</li>
             <li>Password (archiviata in forma crittografata — non accessibile nemmeno a noi)</li>
+            <li>Se scegli di accedere tramite <strong>Google Sign-In</strong> o <strong>Apple Sign-In</strong>, riceviamo dal rispettivo provider solo l'indirizzo email associato al tuo account Google o Apple, che utilizziamo esclusivamente per creare e identificare il tuo account Mafe Balance.</li>
         </ul>
 
         <h3>2.2 Dati Finanziari Inseriti dall'Utente</h3>
@@ -185,29 +174,46 @@
             <li>Transazioni ricorrenti</li>
         </ul>
         <p>Questi dati sono inseriti volontariamente dall'utente e non vengono recuperati automaticamente da conti bancari reali.</p>
+        <p><strong>Trasmissione a servizi AI:</strong> per le funzioni di intelligenza artificiale, i seguenti dati vengono trasmessi a <strong>Google Gemini AI</strong> (vedi §5) in forma pseudonimizzata (senza nome o email dell'utente):</p>
+        <ul>
+            <li><strong>Categorizzazione transazioni:</strong> descrizione, importo, data, nome del merchant e fino a 5 transazioni storiche simili dell'utente</li>
+            <li><strong>Insight finanziari:</strong> statistiche aggregate per categoria (media mensile, trend, pattern orario e settimanale), reddito medio stimato, profilo di spesa, informazioni su abbonamenti potenzialmente inutilizzati</li>
+            <li><strong>Suggerimenti di budget:</strong> storico aggregato per categoria con trend degli ultimi 3 mesi (media, mediana, numero transazioni)</li>
+            <li><strong>Obiettivi di risparmio:</strong> nome obiettivo, importo target, importo accumulato, data scadenza — usati per personalizzare i suggerimenti</li>
+            <li><strong>Correzioni manuali di categoria:</strong> la descrizione completa della transazione viene inviata a Gemini per aggiornare l'associazione merchant→categoria</li>
+            <li><strong>Rilevamento anomalie di spesa:</strong> storico delle transazioni per categoria, importi abituali e deviazioni statistiche — per identificare automaticamente spese inusuali rispetto ai pattern dell'utente</li>
+            <li><strong>Parser AI (inserimento veloce):</strong> solo il testo libero inserito dall'utente (es. "pagato 45€ cena ristorante") per generare automaticamente una transazione strutturata — nessun altro dato dell'account è incluso</li>
+        </ul>
+        <p>Questi dati non vengono utilizzati da Google per addestrare i propri modelli in base alle impostazioni contrattuali applicate.</p>
 
         <h3>2.3 Dati delle Spese Condivise</h3>
-        <p>Se utilizzi la funzione "Gruppi di Spesa", puoi inserire i dati di altre persone (partecipanti): <strong>nome</strong> (obbligatorio), <strong>email</strong> e <strong>numero di telefono</strong> (entrambi facoltativi). Questi dati sono visibili agli altri membri del gruppo di spesa — che è la finalità stessa della funzione — e non vengono condivisi con soggetti terzi esterni né con utenti dell'app che non appartengono al gruppo.</p>
-        <p><strong>Base giuridica:</strong> il trattamento di questi dati avviene sulla base del legittimo interesse (art. 6.1.f GDPR) di Mafe Balance nell'erogare il servizio di gestione spese condivise richiesto dall'utente, nel rispetto del principio di minimizzazione dei dati.</p>
-        <p><strong>Obbligo di informativa verso i partecipanti (art. 14 GDPR):</strong> poiché i dati non vengono raccolti direttamente dai partecipanti, sei responsabile di informarli — prima di inserirne i dati — che il loro nome, email e/o numero di telefono saranno trattati da Mafe Balance per il calcolo dei bilanci del gruppo.</p>
-        <p><strong>Diritti dei partecipanti:</strong> le persone i cui dati sono stati inseriti nell'app hanno gli stessi diritti GDPR degli utenti registrati (accesso, rettifica, cancellazione, opposizione). Per esercitarli possono contattare direttamente <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>. In caso di richiesta di cancellazione, elimineremo i dati del partecipante entro 30 giorni.</p>
+        <p>Se utilizzi la funzione "Gruppi di Spesa", puoi inserire nome, email e numero di telefono di altre persone (partecipanti). Per questi dati di terzi, l'utente agisce come <strong>responsabile autonomo del trattamento</strong> ed è tenuto a informare i partecipanti prima dell'inserimento e a ottenerne il consenso, ove necessario ai sensi del GDPR.</p>
+        <p>Questi dati vengono usati <strong>esclusivamente per il calcolo dei bilanci di gruppo</strong>, <strong>non vengono mai trasmessi a servizi AI</strong> e non vengono condivisi con terzi. I dati dei partecipanti vengono eliminati automaticamente quando l'utente elimina il gruppo di spesa o cancella il proprio account. I partecipanti possono richiedere la cancellazione dei propri dati contattando direttamente l'utente che li ha inseriti oppure scrivendo a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>.</p>
 
         <h3>2.4 Immagini di Scontrini</h3>
-        <p>Se utilizzi la funzione di scansione scontrini, l'immagine viene trasmessa a <strong>Google LLC</strong> (Gemini API — modello Gemini 2.5 Flash) per l'estrazione dei dati. Questo comporta un <strong>trasferimento di dati verso gli USA</strong>, coperto dalle Clausole Contrattuali Standard (SCC) adottate dalla Commissione Europea e/o dal Data Privacy Framework EU-USA (vedi §5 per i dettagli). <strong>L'immagine grezza non viene archiviata permanentemente sui nostri server dopo l'elaborazione.</strong> I dati estratti dallo scontrino (nome del merchant e importo totale) vengono invece conservati nel nostro database associati al tuo account, nella cronologia scansioni, fino alla cancellazione dell'account. Google dichiara che i dati trasmessi tramite API non vengono utilizzati per addestrare i propri modelli AI.</p>
+        <p>Se utilizzi la funzione di scansione scontrini, l'immagine viene trasmessa a servizi di intelligenza artificiale di terze parti (vedi §5) per l'estrazione dei dati. La trasmissione avviene esclusivamente tramite connessione cifrata (<strong>HTTPS/TLS</strong>). <strong>L'immagine grezza non viene archiviata permanentemente nei nostri server dopo l'elaborazione.</strong> I dati estratti dallo scontrino (nome del merchant e importo totale) vengono invece conservati nel nostro database associati al tuo account, nella tabella della cronologia scansioni, fino alla cancellazione dell'account.</p>
 
         <h3>2.5 Dati Tecnici e di Utilizzo</h3>
         <ul>
-            <li>Token del dispositivo per le notifiche push (archiviato localmente)</li>
+            <li>Token del dispositivo per le notifiche push (trasmesso a Firebase/FCM e Apple APNs per la consegna delle notifiche)</li>
             <li>Preferenze dell'app (tema, valuta) — archiviato localmente sul dispositivo</li>
-            <li>Log di errore e dati diagnostici pseudonimizzati per la manutenzione del servizio (tramite Firebase Crashlytics): stack trace, modello dispositivo, versione sistema operativo, identificatore installazione (pseudonimo — non contiene nome né email, si azzera alla reinstallazione dell'app). I dati sono pseudonimizzati, non anonimizzati.</li>
-            <li>Feedback sulle categorizzazioni AI (categoria accettata/modificata) — archiviato nel database associato al tuo UUID utente (pseudonimo), non al nome né all'indirizzo email. Non viene utilizzato per addestrare modelli AI di terze parti.</li>
-            <li>Schermate visitate nell'app — nome della schermata e timestamp, archiviati nel database Supabase associati al tuo UUID utente (pseudonimo). Utilizzati esclusivamente per analisi interne sull'utilizzo del prodotto. Nessun contenuto finanziario viene trasmesso. L'utente può disabilitare la raccolta da <strong>Impostazioni → Privacy</strong>.</li>
-            <li>Contatori di utilizzo delle funzioni AI — numero di utilizzi giornalieri per funzione (categorizzazione AI, analisi scontrini, Smart Insights, Budget AI), archiviati nel database associati al tuo UUID utente. Utilizzati esclusivamente per applicare i limiti di utilizzo gratuito del servizio e non vengono condivisi con terzi.</li>
-            <li>Identificatore pubblicitario (IDFA) — raccolto da Google AdMob <strong>esclusivamente se l'utente ha prestato consenso esplicito</strong> tramite App Tracking Transparency (ATT). In assenza di consenso non viene raccolto alcun identificatore pubblicitario e vengono mostrati solo annunci non personalizzati.</li>
-            <li>Indirizzo IP — raccolto temporaneamente per la protezione da abusi (rate limiting) nelle chiamate alle funzioni AI; archiviato nei log di utilizzo API per un massimo di 90 giorni, poi eliminato automaticamente.</li>
-            <li>Data e ora dell'ultimo accesso all'app (<em>last_active</em>) e data dell'ultimo invio di email di re-engagement — utilizzate per gestire le comunicazioni di riattivazione verso utenti inattivi ed evitare invii ripetuti ravvicinati.</li>
+            <li>Dati diagnostici per la manutenzione del servizio (tramite Firebase Crashlytics): stack trace, modello dispositivo, versione sistema operativo, identificatore installazione anonimo</li>
+            <li>Dati di utilizzo pseudonimizzati (tramite Firebase Analytics): schermate visitate, eventi di utilizzo, <strong>App Instance ID</strong> (identificatore anonimo dell'installazione dell'app, generato da Firebase e non riconducibile all'identità reale dell'utente) e <strong>UUID pseudonimo</strong> (identificatore casuale generato internamente da Mafe Balance, non associato a nome o email) — utilizzati esclusivamente per analytics interni aggregati; l'opt-out è disponibile dalle impostazioni del dispositivo</li>
+            <li>Schermate visitate e timestamp di accesso, archiviati nel nostro database Supabase associati al tuo identificatore utente — utilizzati per la dashboard di amministrazione interna e per valutare il comportamento aggregato degli utenti</li>
+            <li>Data e ora dell'ultimo accesso all'app (<em>last_active</em>) — utilizzata per la gestione delle notifiche e delle comunicazioni di re-engagement</li>
+            <li>Indirizzo IP — raccolto temporaneamente per la protezione da abusi (rate limiting) nelle chiamate AI; archiviato nei log di utilizzo API</li>
+            <li>Feedback sulle categorizzazioni AI (categoria accettata/modificata)</li>
+            <li>Data dell'ultimo invio di email di re-engagement — utilizzata per evitare comunicazioni ripetute ravvicinate</li>
         </ul>
-        <p>La base giuridica per ciascuno dei trattamenti elencati in questa sezione è indicata nella tabella al <strong>§3</strong>. In sintesi: i dati strettamente necessari all'erogazione del servizio sono trattati in base all'esecuzione del contratto (art. 6.1.b); i dati analytics e di diagnostica sono trattati in base al legittimo interesse (art. 6.1.f) con possibilità di opposizione; i dati pubblicitari sono trattati solo previo consenso esplicito (art. 6.1.a).</p>
+
+        <h3>2.6 Permessi del Dispositivo (iOS)</h3>
+        <p>L'app richiede i seguenti permessi del dispositivo, esclusivamente per le funzionalità indicate:</p>
+        <ul>
+            <li><strong>Camera:</strong> utilizzata solo per la scansione degli scontrini. L'accesso viene richiesto al momento dell'utilizzo e può essere revocato in qualsiasi momento da <em>Impostazioni iOS → Mafe Balance → Camera</em>.</li>
+            <li><strong>Libreria Foto:</strong> utilizzata solo per selezionare un'immagine di scontrino già salvata nel dispositivo. L'accesso può essere revocato da <em>Impostazioni iOS → Mafe Balance → Foto</em>.</li>
+            <li><strong>Notifiche:</strong> utilizzate per inviare promemoria di budget, transazioni ricorrenti e aggiornamenti degli obiettivi di risparmio tramite Firebase Cloud Messaging (FCM) e Apple APNs. Il consenso viene richiesto al primo avvio e può essere revocato da <em>Impostazioni iOS → Notifiche → Mafe Balance</em>.</li>
+            <li><strong>Tracciamento (App Tracking Transparency — ATT):</strong> richiesto da AdMob per la pubblicità personalizzata, <strong>solo per gli utenti del piano gratuito</strong>. Puoi revocare il consenso in qualsiasi momento da <em>Impostazioni iOS → Privacy e sicurezza → Tracciamento</em> oppure da <em>Impostazioni iOS → Mafe Balance → Tracciamento</em>. Senza consenso ATT, AdMob mostra comunque pubblicità contestuale non personalizzata.</li>
+        </ul>
 
         <h2>3. Finalità e Base Giuridica del Trattamento</h2>
         <table>
@@ -220,9 +226,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Fornitura del servizio (gestione conti, transazioni, budget, obiettivi)</td>
-                    <td>Email; dati finanziari inseriti dall'utente: transazioni (importo, data, categoria, descrizione), saldi e movimenti dei conti personali, budget, obiettivi di risparmio, simulazioni di acquisto, transazioni ricorrenti, categorie personalizzate</td>
-                    <td>Esecuzione del contratto (art. 6.1.b) — il trattamento è necessario per erogare il servizio di gestione finanziaria personale richiesto dall'utente al momento della registrazione</td>
+                    <td>Fornitura del servizio (gestione conti, transazioni, budget)</td>
+                    <td>Email, dati finanziari</td>
+                    <td>Esecuzione del contratto (art. 6.1.b)</td>
                 </tr>
                 <tr>
                     <td>Autenticazione e sicurezza dell'account</td>
@@ -232,7 +238,7 @@
                 <tr>
                     <td>Categorizzazione AI delle transazioni</td>
                     <td>Descrizione transazione, importo</td>
-                    <td>Consenso esplicito (art. 6.1.a) — richiesto nell'app prima dell'attivazione; revocabile in qualsiasi momento dalle impostazioni</td>
+                    <td>Esecuzione del contratto / Legittimo interesse (art. 6.1.b/f)</td>
                 </tr>
                 <tr>
                     <td>Analisi scontrini</td>
@@ -240,19 +246,19 @@
                     <td>Consenso esplicito (art. 6.1.a) — funzione opzionale</td>
                 </tr>
                 <tr>
-                    <td>Suggerimenti budget AI e insight finanziari</td>
+                    <td>Suggerimenti budget AI</td>
                     <td>Storico transazioni anonimizzato</td>
-                    <td>Consenso esplicito (art. 6.1.a) — incluso nel consenso AI rilasciato nell'app; revocabile in qualsiasi momento</td>
+                    <td>Esecuzione del contratto (art. 6.1.b)</td>
                 </tr>
                 <tr>
-                    <td>Notifiche push (budget, ricorrenti)</td>
+                    <td>Notifiche push (budget, ricorrenti, obiettivi) tramite FCM e APNs</td>
                     <td>Token dispositivo</td>
-                    <td>Consenso (richiesto dal sistema operativo)</td>
+                    <td>Consenso esplicito dell'utente (art. 6.1.a) — richiesto da iOS al primo avvio; revocabile da <em>Impostazioni iOS → Notifiche → Mafe Balance</em></td>
                 </tr>
                 <tr>
-                    <td>Gestione spese condivise — dati partecipanti terzi</td>
-                    <td>Nome (obbligatorio), email e numero di telefono (facoltativi) dei partecipanti inseriti dall'utente</td>
-                    <td>Legittimo interesse (art. 6.1.f) — erogazione del servizio di gestione spese condivise richiesto dall'utente, nel rispetto del principio di minimizzazione. I partecipanti che non sono utenti registrati possono esercitare i propri diritti GDPR scrivendo a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>.</td>
+                    <td>Pubblicità in-app (AdMob — solo piano gratuito)</td>
+                    <td>IDFA, dati dispositivo, dati di utilizzo app</td>
+                    <td>Consenso esplicito tramite App Tracking Transparency (art. 6.1.a) — revocabile da <em>Impostazioni iOS → Privacy e sicurezza → Tracciamento</em>; senza consenso ATT vengono mostrati annunci contestuali non personalizzati</td>
                 </tr>
                 <tr>
                     <td>Gestione abbonamenti e pagamenti</td>
@@ -260,34 +266,39 @@
                     <td>Esecuzione del contratto (art. 6.1.b)</td>
                 </tr>
                 <tr>
-                    <td>Analisi utilizzo app (Firebase Analytics)</td>
-                    <td>App Instance ID (identificatore pseudonimo di installazione) e UUID utente Supabase (pseudonimo — non contiene nome né email, impostato tramite <code>setUserId</code> al login), schermate visitate, eventi di utilizzo. Nessun dato finanziario viene incluso negli eventi analytics.</td>
-                    <td>Legittimo interesse (art. 6.1.f). <strong>Bilanciamento LIA:</strong> interesse legittimo = miglioramento del prodotto tramite comprensione dei percorsi d'uso. Misure di bilanciamento: (a) identificatori pseudonimi non collegabili a nome/email; (b) nessun dato finanziario trasmesso; (c) nessuna profilazione con effetti giuridici; (d) opt-out disponibile in-app. <strong>Diritto di opposizione (art. 21 GDPR):</strong> disabilita la raccolta in qualsiasi momento da <strong>Impostazioni → Privacy</strong>.</td>
+                    <td>Gruppi di Spesa (dati di terzi inseriti dall'utente)</td>
+                    <td>Nome, email, telefono dei partecipanti</td>
+                    <td>Legittimo interesse dell'utente (art. 6.1.f) — l'utente è responsabile di aver informato i partecipanti</td>
                 </tr>
                 <tr>
-                    <td>Miglioramento del servizio (feedback AI)</td>
-                    <td>Categoria accettata o corretta dall'utente, associata al UUID utente (pseudonimo — non contiene nome, email o dati direttamente identificativi). Il feedback <strong>non viene condiviso con terzi</strong> né usato per addestrare modelli AI di terze parti.</td>
-                    <td>Legittimo interesse (art. 6.1.f). <strong>Bilanciamento LIA:</strong> interesse legittimo = miglioramento dell'accuratezza della categorizzazione AI per tutti gli utenti. Misure di bilanciamento: (a) dato ridotto al minimo (solo label di categoria, senza descrizione della transazione né importo); (b) pseudonimizzazione via UUID; (c) nessuna condivisione con terzi; (d) nessun impatto su decisioni automatizzate con effetti giuridici. <strong>Diritto di opposizione (art. 21 GDPR):</strong> scrivi a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>.</td>
+                    <td>Analytics di utilizzo aggregati (Firebase Analytics)</td>
+                    <td>UUID pseudonimo, schermate visitate, App Instance ID</td>
+                    <td>Legittimo interesse (art. 6.1.f) — miglioramento del servizio; opt-out disponibile nelle impostazioni del dispositivo</td>
                 </tr>
                 <tr>
-                    <td>Pubblicità in-app — piano gratuito (Google AdMob)</td>
-                    <td>Identificatore pubblicitario (IDFA/AAID), informazioni dispositivo (modello, sistema operativo), dati di utilizzo dell'app</td>
-                    <td>Consenso esplicito (art. 6.1.a) — richiesto prima della visualizzazione di annunci personalizzati tramite <strong>App Tracking Transparency (ATT)</strong>. Puoi revocare il consenso in qualsiasi momento da <strong>Impostazioni → Privacy e sicurezza → Tracciamento</strong>. In assenza di consenso vengono mostrati esclusivamente annunci non personalizzati.</td>
-                </tr>
-                <tr>
-                    <td>Diagnostica crash e stabilità (Firebase Crashlytics)</td>
-                    <td>Stack trace, stato dispositivo al momento del crash, identificatore installazione anonimo</td>
-                    <td>Legittimo interesse (art. 6.1.f) — mantenere la stabilità e la qualità del servizio. I dati sono tecnici e non contengono dati finanziari né identificativi diretti. <strong>Diritto di opposizione (art. 21 GDPR):</strong> disabilita la raccolta da <strong>Impostazioni → Privacy</strong>.</td>
+                    <td>Tracciamento schermate visitate interno (Supabase)</td>
+                    <td>ID utente, nome schermata, timestamp</td>
+                    <td>Legittimo interesse (art. 6.1.f) — analytics operativi interni; dati cancellati con l'account</td>
                 </tr>
                 <tr>
                     <td>Email di re-engagement per utenti inattivi</td>
                     <td>Email, data ultimo accesso, data ultimo invio</td>
-                    <td>Legittimo interesse (art. 6.1.f) — riattivazione utenti inattivi da 7+ giorni. <strong>Diritto di opposizione (art. 21 GDPR) / opt-out:</strong> disabilita in Impostazioni → Notifiche.</td>
+                    <td>Legittimo interesse (art. 6.1.f) — riattivazione utenti; opt-out disponibile disattivando le notifiche in Impostazioni → Notifiche</td>
+                </tr>
+                <tr>
+                    <td>Risparmio automatico programmato (Auto-Save)</td>
+                    <td>Dati finanziari (saldo, obiettivo di risparmio)</td>
+                    <td>Esecuzione del contratto (art. 6.1.b) — funzione attivata su esplicita configurazione dell'utente</td>
                 </tr>
                 <tr>
                     <td>Rate limiting e protezione da abusi</td>
                     <td>Indirizzo IP, conteggio chiamate API</td>
-                    <td>Legittimo interesse (art. 6.1.f) — sicurezza del servizio e prevenzione abusi.</td>
+                    <td>Legittimo interesse (art. 6.1.f) — sicurezza del servizio e prevenzione abusi</td>
+                </tr>
+                <tr>
+                    <td>Miglioramento del servizio (feedback AI)</td>
+                    <td>Categorie accettate/modificate</td>
+                    <td>Legittimo interesse (art. 6.1.f)</td>
                 </tr>
                 <tr>
                     <td>Assistenza e supporto</td>
@@ -319,68 +330,32 @@
                     <td>Non archiviate — elaborate in tempo reale e scartate</td>
                 </tr>
                 <tr>
-                    <td>Log di errore tecnici</td>
-                    <td>30 giorni</td>
-                </tr>
-                <tr>
-                    <td>Dati feedback AI (categorie)</td>
-                    <td>Fino alla cancellazione dell'account</td>
-                </tr>
-                <tr>
-                    <td>Dati abbonamento — registrazioni fiscali. Dati esatti conservati: <strong>importo pagato, data dell'operazione, tipo di piano acquistato, identificativo transazione App Store</strong>. Non include: email, nome, dati finanziari dell'utente, cronologia transazioni personali.</td>
-                    <td>10 anni dall'operazione, ai sensi dell'art. 2220 c.c. e del DPR 633/72 (obbligo di conservazione delle scritture contabili). <strong>In caso di cancellazione dell'account, solo questi campi fiscali minimi vengono trattenuti per l'obbligo di legge; tutti gli altri dati personali vengono eliminati immediatamente.</strong></td>
-                </tr>
-                <tr>
-                    <td>Dati abbonamento — stato e preferenze (piano attivo, data rinnovo)</td>
-                    <td>Fino alla cancellazione dell'account. I dati di pagamento (carta, IBAN) non sono mai archiviati direttamente dall'app.</td>
-                </tr>
-                <tr>
-                    <td>Dati partecipanti Gruppi di Spesa (nome, email di terzi)</td>
-                    <td>Fino all'eliminazione del partecipante o del gruppo da parte dell'utente, o fino alla cancellazione dell'account — a seconda di quale evento avvenga prima</td>
-                </tr>
-                <tr>
-                    <td>Schermate visitate (screen_views — nome schermata + timestamp)</td>
-                    <td>Fino alla cancellazione dell'account (eliminazione automatica a cascata)</td>
-                </tr>
-                <tr>
-                    <td>Contatori utilizzo funzioni AI giornalieri (daily_quotas)</td>
-                    <td>Fino alla cancellazione dell'account (eliminazione automatica a cascata)</td>
-                </tr>
-                <tr>
                     <td>Dati estratti dagli scontrini (merchant, importo)</td>
                     <td>Fino alla cancellazione dell'account</td>
+                </tr>
+                <tr>
+                    <td>Log di errore tecnici</td>
+                    <td>30 giorni</td>
                 </tr>
                 <tr>
                     <td>Log utilizzo API (indirizzo IP, timestamp chiamate AI)</td>
                     <td>90 giorni, poi eliminati automaticamente</td>
                 </tr>
                 <tr>
+                    <td>Schermate visitate (screen_views interno)</td>
+                    <td>Fino alla cancellazione dell'account</td>
+                </tr>
+                <tr>
                     <td>Data ultimo accesso e data ultimo re-engagement</td>
                     <td>Fino alla cancellazione dell'account</td>
                 </tr>
                 <tr>
-                    <td>Dati Firebase Analytics (App Instance ID, eventi di utilizzo)</td>
-                    <td>Gestiti da Google secondo le impostazioni di conservazione del progetto Firebase (configurate a 14 mesi). Non è possibile cancellare singoli eventi analytics già trasmessi; la cancellazione dell'account interrompe la raccolta futura.</td>
+                    <td>Dati feedback AI (categorie)</td>
+                    <td>Fino alla cancellazione dell'account</td>
                 </tr>
                 <tr>
-                    <td>Dati Firebase Crashlytics (stack trace, stato dispositivo)</td>
-                    <td>90 giorni (politica di conservazione di Firebase Crashlytics gestita da Google).</td>
-                </tr>
-                <tr>
-                    <td>Token dispositivo FCM (notifiche push)</td>
-                    <td>Fino al refresh automatico del token da parte di Firebase (tipicamente alla disinstallazione dell'app o al cambio dispositivo). Il token non è archiviato nel nostro database; è gestito da Firebase/APNs.</td>
-                </tr>
-                <tr>
-                    <td>Identificatore pubblicitario (IDFA)</td>
-                    <td>Non archiviato sui nostri server. Gestito da Google AdMob secondo la propria policy sulla privacy. Revocabile in qualsiasi momento da <strong>Impostazioni → Privacy e sicurezza → Tracciamento</strong>.</td>
-                </tr>
-                <tr>
-                    <td>Preferenze app (tema, valuta)</td>
-                    <td>Archiviate esclusivamente in locale sul dispositivo (SharedPreferences). Non trasmesse ai nostri server. Eliminate automaticamente alla disinstallazione dell'app.</td>
-                </tr>
-                <tr>
-                    <td>Dati di assistenza e supporto (email, dettagli segnalati)</td>
-                    <td>Fino alla risoluzione della richiesta e per un massimo di 2 anni, per consentire la gestione di eventuali reclami o contestazioni successive.</td>
+                    <td>Dati abbonamento</td>
+                    <td>10 anni (obblighi fiscali e contabili)</td>
                 </tr>
             </tbody>
         </table>
@@ -400,55 +375,67 @@
             <tbody>
                 <tr>
                     <td><strong>Supabase Inc.</strong></td>
-                    <td>Database, autenticazione, backend, analytics schermate</td>
-                    <td>Tutti i dati dell'account e finanziari; schermate visitate (nome schermata + timestamp, associati all'UUID utente pseudonimo — nessun dato finanziario)</td>
-                    <td>UE — server Paris, West EU (Francia). La società è costituita negli USA ma i dati di questo servizio sono trattati esclusivamente su infrastruttura europea.</td>
+                    <td>Database, autenticazione, backend</td>
+                    <td>Tutti i dati dell'account e finanziari</td>
+                    <td>USA (server EU disponibili)</td>
                 </tr>
                 <tr>
                     <td><strong>Google LLC</strong> (Gemini API — modello: Gemini 2.5 Flash)</td>
                     <td>Intelligenza artificiale (categorizzazione transazioni, suggerimenti budget, analisi scontrini, insight finanziari)</td>
-                    <td>I dati trasmessi variano per funzione e includono, in forma pseudonimizzata (senza nome né email): descrizione, importo, data e merchant delle transazioni; fino a 5 transazioni storiche simili; statistiche aggregate per categoria (media mensile, trend, pattern orario/settimanale); reddito medio stimato; profilo di spesa; obiettivi di risparmio (nome, target, importo accumulato, scadenza); immagini di scontrini. <strong>Google dichiara nei propri termini di servizio API che i dati inviati tramite API non vengono utilizzati per addestrare i propri modelli di AI.</strong></td>
-                    <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                    <td>Descrizioni, importi, date, merchant delle transazioni; storico transazioni simili; statistiche aggregate per categoria; reddito medio stimato; profilo finanziario; obiettivi di risparmio; immagini scontrini</td>
+                    <td>USA</td>
+                </tr>
+                <tr>
+                    <td><strong>Stripe, Inc.</strong></td>
+                    <td>Elaborazione pagamenti</td>
+                    <td>Email, dati transazione di pagamento</td>
+                    <td>USA</td>
                 </tr>
                 <tr>
                     <td><strong>Apple Inc.</strong></td>
-                    <td>App Store, notifiche push (APNs), autenticazione OAuth (Sign in with Apple)</td>
-                    <td>Token dispositivo; identificativo utente anonimo Apple (sub claim) per autenticazione — Apple non condivide l'indirizzo email reale a meno che l'utente non scelga esplicitamente di farlo</td>
-                    <td>USA (trasferimento coperto da Data Privacy Framework EU-USA)</td>
-                </tr>
-                <tr>
-                    <td><strong>Google LLC</strong> (Google Sign-In)</td>
-                    <td>Autenticazione OAuth tramite account Google</td>
-                    <td>Indirizzo email e identificativo utente Google (sub claim), usati esclusivamente per creare o autenticare l'account Mafe Balance. Non vengono condivisi con terzi né usati per profilazione.</td>
-                    <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                    <td>App Store, notifiche push (APNs)</td>
+                    <td>Token dispositivo</td>
+                    <td>USA</td>
                 </tr>
                 <tr>
                     <td><strong>Google LLC</strong> (Firebase/FCM)</td>
-                    <td>Notifiche push iOS (tramite APNs)</td>
-                    <td>Token dispositivo FCM</td>
-                    <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                    <td>Notifiche push Android</td>
+                    <td>Token dispositivo</td>
+                    <td>USA</td>
                 </tr>
                 <tr>
                     <td><strong>Google LLC</strong> (Firebase Analytics)</td>
                     <td>Analisi utilizzo app (schermate, eventi, sessioni)</td>
-                    <td>App Instance ID (identificatore pseudonimo di installazione; si azzera alla disinstallazione) e UUID utente Supabase (pseudonimo, impostato al login tramite <code>setUserId</code> — non contiene nome né email), schermate visitate, eventi di utilizzo. I dati sono pseudonimizzati, non anonimizzati. Nessun dato finanziario viene trasmesso. L'utente può disabilitare la raccolta da Impostazioni → Privacy.</td>
-                    <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                    <td>Identificatori dispositivo, dati di utilizzo aggregati</td>
+                    <td>USA</td>
                 </tr>
                 <tr>
                     <td><strong>Google LLC</strong> (Firebase Crashlytics)</td>
                     <td>Reportistica crash e diagnostica errori</td>
                     <td>Stack trace, stato dispositivo al momento del crash, identificatore installazione</td>
-                    <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                    <td>USA</td>
+                </tr>
+                <tr>
+                    <td><strong>Google LLC</strong> (Google Sign-In)</td>
+                    <td>Autenticazione OAuth</td>
+                    <td>Indirizzo email dell'account Google</td>
+                    <td>USA</td>
+                </tr>
+                <tr>
+                    <td><strong>Apple Inc.</strong> (Sign in with Apple)</td>
+                    <td>Autenticazione OAuth</td>
+                    <td>Indirizzo email dell'account Apple (può essere un relay anonimo)</td>
+                    <td>USA</td>
                 </tr>
                 <tr>
                     <td><strong>Google LLC</strong> (AdMob)</td>
-                    <td>Pubblicità in-app (piano gratuito). AdMob può erogare annunci personalizzati basati sul profilo pubblicitario dell'utente (interessi inferiti, comportamento di navigazione cross-app) o annunci non personalizzati (contestuali, senza profilazione).</td>
-                    <td>Con consenso ATT (annunci personalizzati): Identificatore pubblicitario (IDFA), informazioni dispositivo, dati di utilizzo, segnali contestuali. Senza consenso ATT: solo informazioni contestuali non identificative. Base giuridica: consenso esplicito (art. 6.1.a). Per dettagli: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</td>
-                    <td>USA (trasferimento coperto da SCC/Data Privacy Framework EU-USA)</td>
+                    <td>Pubblicità in-app (solo piano gratuito)</td>
+                    <td>Identificatore pubblicitario (IDFA su iOS), informazioni dispositivo, dati di utilizzo app. Su iOS il tracciamento richiede consenso esplicito tramite App Tracking Transparency (ATT). <strong>Puoi revocare il consenso ATT in qualsiasi momento</strong> da <em>Impostazioni iOS → Privacy e sicurezza → Tracciamento</em> oppure da <em>Impostazioni iOS → Mafe Balance → Tracciamento</em>. Senza consenso, AdMob mostra pubblicità contestuale non personalizzata.</td>
+                    <td>USA</td>
                 </tr>
                 <tr>
                     <td><strong>Resend Inc.</strong></td>
-                    <td>Invio email transazionali (comunicazioni di re-engagement per utenti inattivi)</td>
+                    <td>Invio email transazionali (re-engagement utenti inattivi)</td>
                     <td>Indirizzo email degli utenti destinatari</td>
                     <td>USA</td>
                 </tr>
@@ -459,21 +446,20 @@
             <strong>Trasferimento dati extra-UE:</strong> Alcuni fornitori sopra elencati hanno sede negli Stati Uniti. Il trasferimento avviene nel rispetto delle garanzie previste dal GDPR (Capitolo V), in particolare attraverso le Clausole Contrattuali Standard (SCC) adottate dalla Commissione Europea, o in base al Data Privacy Framework EU-USA dove applicabile.
         </div>
 
-        <p><strong>Vendita e condivisione dei dati:</strong> Non vendiamo, affittiamo né cediamo i tuoi dati personali a terzi per finalità commerciali o di profilazione. I dati vengono condivisi <em>esclusivamente</em> con i fornitori tecnici elencati nella tabella sopra, nella misura strettamente necessaria all'erogazione del servizio (ad esempio Supabase per il database, Google Gemini per le funzioni AI, Firebase per notifiche e diagnostica). Per la pubblicità in-app tramite Google AdMob, i dati identificativi vengono trasmessi a Google <strong>solo previo tuo consenso esplicito</strong> (ATT su iOS, UMP su Android); in assenza di consenso nessun identificatore pubblicitario viene condiviso.</p>
+        <p>Non vendiamo, affittiamo o condividiamo i tuoi dati personali con terzi per finalità di marketing o profilazione commerciale.</p>
 
         <h2>6. I Tuoi Diritti</h2>
         <p>Ai sensi del Regolamento UE 2016/679 (GDPR), hai i seguenti diritti:</p>
         <ul>
-            <li><strong>Accesso (art. 15):</strong> puoi richiedere una copia dei tuoi dati personali e informazioni sul loro trattamento.</li>
-            <li><strong>Rettifica (art. 16):</strong> puoi richiedere la correzione di dati inesatti o il completamento di dati incompleti.</li>
-            <li><strong>Cancellazione / Diritto all'oblio (art. 17):</strong> puoi richiedere la cancellazione dei tuoi dati quando non sono più necessari, quando revochi il consenso, o quando ti opponi al trattamento. Puoi farlo direttamente dall'app (<strong>Impostazioni → Cancella Account</strong>) oppure via email.</li>
-            <li><strong>Limitazione del trattamento (art. 18):</strong> puoi richiedere di sospendere temporaneamente il trattamento nei seguenti casi: (a) contesti l'esattezza dei dati, per il tempo necessario alla verifica; (b) il trattamento è illecito ma preferisci la limitazione alla cancellazione; (c) i dati ti servono per accertare, esercitare o difendere diritti in sede giudiziaria; (d) hai presentato opposizione ex art. 21 e si è in attesa di verifica.</li>
-            <li><strong>Portabilità (art. 20):</strong> puoi ricevere i tuoi dati in formato strutturato e leggibile da macchina (JSON/CSV) per trasferirli ad altro servizio. Esercitabile direttamente dall'app tramite <strong>Impostazioni → Esporta Dati</strong>, oppure via email.</li>
-            <li><strong>Opposizione (art. 21):</strong> puoi opporti in qualsiasi momento al trattamento dei tuoi dati basato su legittimo interesse (art. 6.1.f), inclusi Firebase Analytics e il feedback AI. Per esercitare questo diritto: per Firebase Analytics usa <strong>Impostazioni → Privacy</strong> nell'app; per gli altri trattamenti scrivi a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>.</li>
-            <li><strong>Revoca del consenso:</strong> dove il trattamento si basa sul consenso (es. funzioni AI, pubblicità personalizzata), puoi revocarlo in qualsiasi momento senza pregiudicare la liceità del trattamento precedente. La revoca del consenso AI è disponibile in <strong>Impostazioni → Privacy</strong>.</li>
-            <li><strong>Decisioni automatizzate (art. 22):</strong> Mafe Balance non adotta decisioni basate esclusivamente su trattamento automatizzato che producano effetti giuridici o che incidano in modo analogo significativamente sulla tua persona. Le funzioni AI (categorizzazione, budget, insight) sono strumenti di supporto e non sostituiscono decisioni umane.</li>
+            <li><strong>Accesso (art. 15):</strong> puoi richiedere una copia dei tuoi dati personali.</li>
+            <li><strong>Rettifica (art. 16):</strong> puoi richiedere la correzione di dati inesatti o incompleti.</li>
+            <li><strong>Cancellazione / Diritto all'oblio (art. 17):</strong> puoi richiedere la cancellazione dei tuoi dati. Puoi farlo direttamente dall'app (Impostazioni → Cancella Account) oppure via email.</li>
+            <li><strong>Limitazione del trattamento (art. 18):</strong> puoi richiedere di limitare il trattamento in determinate circostanze.</li>
+            <li><strong>Portabilità (art. 20):</strong> puoi richiedere i tuoi dati in formato strutturato e leggibile da macchina (JSON/CSV) per trasferirli ad altro servizio.</li>
+            <li><strong>Opposizione (art. 21):</strong> puoi opporti al trattamento basato su legittimo interesse.</li>
+            <li><strong>Revoca del consenso:</strong> dove il trattamento si basa sul consenso, puoi revocarlo in qualsiasi momento senza pregiudicare la liceità del trattamento precedente.</li>
         </ul>
-        <p>Per esercitare i tuoi diritti scrivi a: <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>. Risponderemo entro 30 giorni dalla ricezione della richiesta (termine prorogabile di ulteriori 2 mesi per richieste complesse, con comunicazione entro il primo mese ai sensi dell'art. 12.3 GDPR).</p>
+        <p>Per esercitare i tuoi diritti scrivi a: <a href="mailto:support@mafebalance.com">support@mafebalance.com</a>. Risponderemo entro 30 giorni dalla ricezione della richiesta.</p>
         <p>Hai inoltre il diritto di proporre reclamo all'autorità di controllo competente. In Italia: <strong>Garante per la protezione dei dati personali</strong> — <a href="https://www.garanteprivacy.it" target="_blank">www.garanteprivacy.it</a>.</p>
 
         <h2>7. Sicurezza dei Dati</h2>
@@ -490,54 +476,14 @@
         <h2>8. Cookie e Tecnologie di Tracciamento</h2>
         <p>Mafe Balance è un'applicazione mobile e <strong>non utilizza cookie</strong>. Alcune preferenze dell'app (tema, valuta) sono archiviate localmente sul tuo dispositivo tramite SharedPreferences e non vengono trasmesse a server esterni.</p>
 
-        <h2>9. Permessi del Dispositivo</h2>
-        <p>Per erogare le proprie funzionalità, l'app richiede i seguenti permessi di sistema:</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Permesso</th>
-                    <th>Piattaforma</th>
-                    <th>Finalità</th>
-                    <th>Obbligatorio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Internet</td>
-                    <td>iOS</td>
-                    <td>Comunicazione con i server Supabase per la sincronizzazione dei dati e con i servizi di terze parti</td>
-                    <td>Sì</td>
-                </tr>
-                <tr>
-                    <td>Notifiche push</td>
-                    <td>iOS</td>
-                    <td>Promemoria per budget, scadenze pagamenti e transazioni ricorrenti</td>
-                    <td>No — richiesto al primo avvio; la negazione non compromette le funzionalità principali</td>
-                </tr>
-                <tr>
-                    <td>Fotocamera</td>
-                    <td>iOS</td>
-                    <td>Scansione di scontrini per l'aggiunta automatica di transazioni tramite AI</td>
-                    <td>No — richiesto solo all'uso della funzione di scansione</td>
-                </tr>
-                <tr>
-                    <td>Libreria foto / Galleria</td>
-                    <td>iOS</td>
-                    <td>Selezione di immagini di scontrini dalla galleria o importazione di file CSV</td>
-                    <td>No — richiesto solo alla selezione di un'immagine dalla galleria</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>Puoi revocare i permessi facoltativi in qualsiasi momento da <strong>Impostazioni → Mafe Balance</strong>. La revoca non comporta la cancellazione dei dati già inseriti nell'app.</p>
+        <h2>9. Minori</h2>
+        <p>Il servizio è destinato a persone di almeno 18 anni. Non raccogliamo consapevolmente dati di minori di 16 anni. Se ritieni che un minore abbia fornito dati personali senza consenso dei genitori, contattaci immediatamente a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a> e provvederemo alla cancellazione.</p>
 
-        <h2>10. Minori</h2>
-        <p>Il servizio è destinato a persone di almeno 16 anni. Ai sensi dell'art. 8 GDPR e del D.Lgs. 101/2018, i minori di età compresa tra 16 e 18 anni possono prestare validamente il proprio consenso al trattamento dei dati personali. Non raccogliamo consapevolmente dati di minori di 16 anni. Se ritieni che un minore di 16 anni abbia fornito dati personali, contattaci immediatamente a <a href="mailto:support@mafebalance.com">support@mafebalance.com</a> e provvederemo alla cancellazione.</p>
-
-        <h2>11. Modifiche alla presente Informativa</h2>
+        <h2>10. Modifiche alla presente Informativa</h2>
         <p>Potremmo aggiornare questa Informativa per riflettere modifiche al servizio o alla normativa applicabile. In caso di modifiche sostanziali, ti avviseremo tramite notifica in-app o email almeno 30 giorni prima dell'entrata in vigore. L'uso continuato del servizio dopo la notifica costituisce accettazione delle modifiche.</p>
         <p>La versione aggiornata sarà sempre disponibile nell'app alla sezione Impostazioni → Privacy Policy.</p>
 
-        <h2>12. Contatti</h2>
+        <h2>11. Contatti</h2>
         <p>Per qualsiasi domanda, dubbio o richiesta relativa alla presente Informativa o al trattamento dei tuoi dati personali:</p>
         <ul>
             <li><strong>Email:</strong> <a href="mailto:support@mafebalance.com">support@mafebalance.com</a></li>
@@ -546,7 +492,7 @@
 
         <div class="footer">
             <p><strong>© 2025-2026 Mafe Balance — Alessio Rongione. Tutti i diritti riservati.</strong></p>
-            <p>Versione 2.1 — Ultima modifica: 26 agosto 2026</p>
+            <p>Versione 2.2 — Ultima modifica: 6 settembre 2026</p>
         </div>
     </div>
 </body>
